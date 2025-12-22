@@ -1,6 +1,6 @@
 # Onboarding: Начало работы с проектом
 
-Пошаговая инструкция для нового разработчика.
+Пошаговая инструкция для нового разработчика (Windows).
 
 ---
 
@@ -11,43 +11,63 @@
 
 ---
 
-## 2. Установи Claude Code
+## 2. Установи необходимые программы
 
-### macOS
+### 2.1 Установи Node.js
 
-```bash
-# Через npm (нужен Node.js 18+)
+1. Перейди на https://nodejs.org/
+2. Скачай **LTS версию** (зелёная кнопка)
+3. Запусти установщик, жми "Next" везде
+4. После установки **перезапусти терминал**
+
+**Проверь установку:**
+```powershell
+node --version
+npm --version
+```
+
+Должны показать версии (например `v20.10.0` и `10.2.0`).
+
+---
+
+### 2.2 Установи Git
+
+1. Перейди на https://git-scm.com/download/win
+2. Скачай и запусти установщик
+3. При установке можно оставить все настройки по умолчанию
+4. **Перезапусти терминал** после установки
+
+**Проверь установку:**
+```powershell
+git --version
+```
+
+---
+
+### 2.3 Установи Claude Code
+
+Открой **PowerShell** или **Command Prompt** и выполни:
+
+```powershell
 npm install -g @anthropic-ai/claude-code
-
-# Или через Homebrew
-brew install claude-code
 ```
 
-### Проверь установку
-
-```bash
+**Проверь установку:**
+```powershell
 claude --version
-```
-
-Если команда не найдена — установи Node.js:
-```bash
-# Через Homebrew
-brew install node
-
-# Или скачай с https://nodejs.org/
 ```
 
 ---
 
 ## 3. Авторизуйся в Claude Code
 
-```bash
+```powershell
 claude
 ```
 
 При первом запуске:
 1. Откроется браузер для авторизации
-2. Войди через почту, которую тебе дали
+2. Войди через **почту, которую тебе дали**
 3. Подтверди доступ
 4. Вернись в терминал — должно написать что авторизация успешна
 
@@ -55,9 +75,10 @@ claude
 
 ## 4. Склонируй репозиторий
 
-```bash
-# Перейди в папку для проектов
-cd ~/Projects
+```powershell
+# Перейди в папку для проектов (создай если нет)
+mkdir C:\Projects
+cd C:\Projects
 
 # Склонируй репозиторий
 git clone https://github.com/michaelpautov/nha-trang.git
@@ -70,7 +91,7 @@ cd nha-trang
 
 ## 5. Запусти Claude Code в проекте
 
-```bash
+```powershell
 claude
 ```
 
@@ -78,37 +99,47 @@ Claude автоматически прочитает `CLAUDE.md` и поймёт
 
 ---
 
-## 6. Если чего-то не хватает
+## 6. Решение проблем
 
-### Git не установлен
+### "claude" не найден после установки
 
-```bash
-# macOS
-brew install git
+Перезапусти терминал. Если не помогло:
 
-# Или скачай с https://git-scm.com/
+```powershell
+# Проверь где установлен
+npm list -g @anthropic-ai/claude-code
+
+# Попробуй запустить через npx
+npx @anthropic-ai/claude-code
 ```
 
-### Node.js не установлен
+---
 
-```bash
-# macOS
-brew install node
+### "npm" не найден
 
-# Или скачай с https://nodejs.org/ (LTS версия)
-```
+Node.js не установлен или терминал не перезапущен. Установи Node.js и перезапусти терминал.
 
-### npm выдаёт ошибки прав доступа
+---
 
-```bash
-# Исправить права
-sudo chown -R $(whoami) ~/.npm
-```
+### "git" не найден
 
-### Homebrew не установлен (macOS)
+Git не установлен или терминал не перезапущен. Установи Git и перезапусти терминал.
 
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+---
+
+### Ошибка прав доступа при npm install -g
+
+Запусти PowerShell **от имени администратора**:
+1. Нажми Win + X
+2. Выбери "Windows PowerShell (Admin)" или "Terminal (Admin)"
+3. Повтори команду установки
+
+---
+
+### Проблемы с SSL/сертификатами
+
+```powershell
+git config --global http.sslVerify false
 ```
 
 ---
@@ -136,6 +167,27 @@ nha-trang/
     ├── user-stories.md # User stories
     ├── data-models.md  # Схема базы данных
     └── pages.md        # Макеты страниц
+```
+
+---
+
+## Полезные команды Windows
+
+```powershell
+# Показать текущую папку
+cd
+
+# Список файлов
+dir
+
+# Перейти в папку
+cd имя_папки
+
+# Вернуться на уровень выше
+cd ..
+
+# Очистить экран
+cls
 ```
 
 ---
